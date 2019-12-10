@@ -971,6 +971,10 @@ public class GlobalOnClickManagerScript : MonoBehaviour {
                 AudioMan.PlayApplySound();
                 AlarmMan.AlarmEnable();
                 break;
+            case "MiscClockAlarm/AlarmSnoozeButton":
+                AudioMan.PlayApplySound();
+                AlarmMan.AlarmSnooze();
+                break;
             case "MiscClockAlarm/AlarmReleaseButton":
                 AudioMan.PlayApplySound();
                 AlarmMan.AlarmDisable();

@@ -34,6 +34,10 @@ public class AlarmManagerScript : MonoBehaviour
     [SerializeField]
     private Text AlarmMinutesAlarmWindow;
     [SerializeField]
+    private GameObject SetAlarmWindow;
+    [SerializeField]
+    private GameObject SnoozeAlarmWindow;
+    [SerializeField]
     private GameObject AlarmWindowsObject;
 
     [SerializeField]
@@ -63,13 +67,14 @@ public class AlarmManagerScript : MonoBehaviour
 
     //-----------------------------
 
-    const int jsonVerMaster = 1; //設定ファイルバージョン
+    const int jsonVerMaster = 2; //設定ファイルバージョン
     const string jsonPath = "config\\Alarm.json";
     AlarmConfig config = null; //読み込まれた設定
 
     [Serializable]
     class AlarmConfig
     {
+        public int SnoozeMinute = 5;
         public int Hour = 0;
         public int Minutes = 0;
         public bool Enable = false;
@@ -226,6 +231,8 @@ public class AlarmManagerScript : MonoBehaviour
     //アラーム停止
     public void AlarmDisable()
     {
+        SnoozeAlarmWindow.SetActive(false);
+        SetAlarmWindow.SetActive(true);
         AlarmRinging = false; //アラーム鳴動状態:停止
         config.Enable = false; //アラーム設定:無効
         saveJSON();//時刻と無効を反映
@@ -247,6 +254,8 @@ public class AlarmManagerScript : MonoBehaviour
     }
     public void AlarmEnable() {
         ApplyAlarmSettingToConfig(); //設定画面からアラーム設定に反映
+        SnoozeAlarmWindow.SetActive(false);
+        SetAlarmWindow.SetActive(true);
         AlarmRinging = false; //アラーム鳴動状態:停止
         config.Enable = true; //アラーム設定:有効
         saveJSON(); //時刻と有効を反映
@@ -258,10 +267,24 @@ public class AlarmManagerScript : MonoBehaviour
         AlarmWindowImage.color = AlarmWindowImageColor; //色をもとに戻す
     }
 
+    public void AlarmSnooze()
+    {
+        AlarmDisable();
+        // var AlarmDateTime = new DateTime(1, 1, 2, config.Hour, config.Minutes, 0).AddMinutes(config.SnoozeMinute); // value from user alarm
+        var AlarmDateTime = DateTime.Now.AddMinutes(config.SnoozeMinute); // value from on time
+        HourHigh = AlarmDateTime.Hour / 10;
+        HourLow = AlarmDateTime.Hour % 10;
+        MinutesHigh = AlarmDateTime.Minute / 10;
+        MinutesLow = AlarmDateTime.Minute % 10;
+        AlarmEnable();
+    }
+
     public void OnTime() {
         AlarmAudioSrc.PlayDelayed(1f);
         AudioMan.ApplyVolume();
         menu.ShowDialogOK(LanguageManager.config.showdialog.ONTIME, LanguageManager.config.showdialog.ALARMSTOP, 0f, () => { });
+        SetAlarmWindow.SetActive(false);
+        SnoozeAlarmWindow.SetActive(true);
         AlarmRinging = true; //アラーム鳴動状態:鳴動
     }
 
