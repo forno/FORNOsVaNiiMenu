@@ -60,12 +60,12 @@ OKボタンをタッチしてください
 ・設定ファイルを編集するとさらに応用的な使い方ができます。
 ・VRAutorunHelper.exeを使用するとVR使用時に自動起動するようになります。";
 
-        public string TUTORIAL4_TITLE = "Discordのご案内(4/4)";
+        public string TUTORIAL4_TITLE = "Supportのご案内(4/4)";
         public string TUTORIAL4_BODY_1 = @"
-本ツールの更新情報はDiscordサーバーで配信しています。
-ご意見・ご要望等もこちらまで。
+本ツールの更新情報はTwitterで配信しています。
+ご意見・ご要望等もリプライかDMまで。
 
-";//https://discord.gg/QSrDhE8
+";//https://twitter.com/forno_recsys
         public string TUTORIAL4_BODY_2 = @"
 このURLを開きますか？(ブラウザを開きます)
 
@@ -128,7 +128,7 @@ VaNiiTweetHelperを起動しますか？
         public string ALARM_ERROR = "アラーム機能が異常動作しました。\nアラーム動作が信頼できない可能性があります。";
         public string ONTIME = "時間になりました";
         public string ALARMSTOP = "停止するにはアラーム設定画面でReleaseをタップしてください。";
-        public string OPEN_DISCORD = "Discordを開きますか？";
+        public string OPEN_SUPPORT = "Supportを開きますか？";
         public string OPEN_VANIIMENU = "VaNiiMenuを起動しますか？";
         public string OPEN_VANIIMENU_BODY = "";//v0.11
         public string EXIT_VANIIMENU_TITLE = "VaNiiMenuを終了しますか？";

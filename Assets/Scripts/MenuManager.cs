@@ -250,10 +250,10 @@ public class MenuManager : MonoBehaviour {
                     //機能説明
                     ShowDialogOK(LanguageManager.config.tutorial.TUTORIAL3_TITLE, LanguageManager.config.tutorial.TUTORIAL3_BODY, 0.5f, () =>
                     {
-                        //Discord案内
-                        ShowDialogOKCancel(LanguageManager.config.tutorial.TUTORIAL4_TITLE, LanguageManager.config.tutorial.TUTORIAL4_BODY_1+ "http://example.com" + LanguageManager.config.tutorial.TUTORIAL4_BODY_2, 0.5f, () =>
+                        //Support案内
+                        ShowDialogOKCancel(LanguageManager.config.tutorial.TUTORIAL4_TITLE, LanguageManager.config.tutorial.TUTORIAL4_BODY_1+ "https://twitter.com/forno_recsys" + LanguageManager.config.tutorial.TUTORIAL4_BODY_2, 0.5f, () =>
                         {
-                            Launcher.Launch("http://example.com", "", "");
+                            Launcher.Launch("https://twitter.com/forno_recsys", "", "");
                             WelcomeStartup();
                         }, () => {
                             WelcomeStartup();
@@ -278,7 +278,7 @@ public class MenuManager : MonoBehaviour {
     //オンライン機能
     void WelcomeOnline()
     {
-        //Discord案内
+        //Support案内
         ShowDialogOKCancel(LanguageManager.config.tutorial.TUTORIAL_ONLINE_TITLE, LanguageManager.config.tutorial.TUTORIAL_ONLINE_BODY, 0.5f, () =>
         {
             Launcher.Launch("VaNiiTweetHelper\\VaNiiTweetHelper.exe", "", "");

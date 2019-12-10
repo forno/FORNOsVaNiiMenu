@@ -25003,7 +25003,7 @@ GameObject:
   - component: {fileID: 822796001}
   - component: {fileID: 822796000}
   m_Layer: 5
-  m_Name: DiscordButton
+  m_Name: SupportButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35124,7 +35124,7 @@ MonoBehaviour:
     m_LineSpacing: 0.8
   m_Text: 'Support
 
-    Discord'
+    Twitter'
 --- !u!222 &1149242851
 CanvasRenderer:
   m_ObjectHideFlags: 0
