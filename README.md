@@ -1,7 +1,14 @@
+# FORNO's VaNiiMenu
+このソフトウェアはOpenVaNiiMenuから派生した作品です
+
+この製品の問題は[FORNO](https://twitter.com/forno_recsys)までリプかDMによって送るか，
+このリポジトリのIssueを使うこともできます
+
+この製品に関して原著作者のSegumentation Fault氏に問い合わせないようにお願いいたします
+
 # OpenVaNiiMenu
 VaNiiMenuのオープンソース版です。  
 https://sabowl.sakura.ne.jp/gpsnmeajp/unity/vaniimenu/  
-  
 
 ## 注意
 VaNiiMenu v0.11相当です。  
