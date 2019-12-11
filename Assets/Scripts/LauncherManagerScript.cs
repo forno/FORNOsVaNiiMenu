@@ -182,7 +182,7 @@ public class LauncherManagerScript : MonoBehaviour {
     public void saveJSON()
     {
         //設定ファイルを書き込み
-        var json = JsonUtility.ToJson(config);
+        var json = JsonUtility.ToJson(config, true);
         File.WriteAllText(jsonPath, json, new UTF8Encoding(false));
     }
 
