@@ -32,7 +32,7 @@ public class LauncherManagerScript : MonoBehaviour {
 
     ApplicationConfig OnClickApp; //OnClickでコールバックする用の一時変数
 
-    const int jsonVerMaster = 1; //設定ファイルバージョン
+    const int jsonVerMaster = 2; //設定ファイルバージョン
     [Serializable]
     class LauncherConfig
     {
@@ -63,6 +63,7 @@ public class LauncherManagerScript : MonoBehaviour {
         public string Arguments = @"";
         public string StartupDialogMainText = @"%name%を起動しますか？";
         public string StartupDialogSubText = @"";
+        public bool MinimumLaunch = false;
     }
 
     public void pageNext()
@@ -258,7 +259,7 @@ public class LauncherManagerScript : MonoBehaviour {
         subText = subText.Replace("%name%", OnClickApp.ApplicationName);
 
         menu.ShowDialogOKCancel(mainText, subText, 0.05f,()=> {
-            Launch(OnClickApp.FilePath, OnClickApp.Arguments, OnClickApp.WorkingDirectory);
+            LaunchLauncher(OnClickApp.FilePath, OnClickApp.Arguments, OnClickApp.WorkingDirectory, OnClickApp.MinimumLaunch);
         },()=> { });
     }
 
@@ -308,6 +309,22 @@ public class LauncherManagerScript : MonoBehaviour {
         proc.StartInfo.FileName = filename;
         proc.StartInfo.Arguments = arg;
         proc.StartInfo.WorkingDirectory = WorkingDirectory;
+        proc.Start();
+    }
+
+    public void LaunchLauncher(string filename, string arg, string WorkingDirectory, bool isMinimum)
+    {
+        System.Diagnostics.Process proc = new System.Diagnostics.Process();
+        proc.StartInfo.UseShellExecute = true;
+        proc.StartInfo.CreateNoWindow = false;
+        proc.StartInfo.ErrorDialog = false;
+        proc.StartInfo.FileName = filename;
+        proc.StartInfo.Arguments = arg;
+        proc.StartInfo.WorkingDirectory = WorkingDirectory;
+        if (isMinimum)
+        {
+            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized; //最小化して起動
+        }
         proc.Start();
     }
 
