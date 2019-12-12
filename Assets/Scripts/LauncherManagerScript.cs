@@ -189,7 +189,7 @@ public class LauncherManagerScript : MonoBehaviour {
     public void makeJSON()
     {
         //初期設定ファイルを生成
-        var json = JsonUtility.ToJson(new LauncherConfig());
+        var json = JsonUtility.ToJson(new LauncherConfig(), true);
         //初期設定ファイルを書き込み
         File.WriteAllText(jsonPath, json, new UTF8Encoding(false));
     }
